@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-bacground-color: ${({ theme }) => theme.colors.gray.light};
+background-color: ${({ theme }) => theme.colors.gray.light};
 display:flex;
 padding: ${({ theme }) => theme.spacing.sm}px 0;
 justify-content: space-between;
