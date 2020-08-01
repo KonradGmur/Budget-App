@@ -4,8 +4,8 @@ import { initReactI18next } from 'react-i18next';
 import CustomBackend from './CustomBackend';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-const token = '4cfeaa05214ba122557e970429a11b88';
-const id = '318221';
+const token = '9b7da956e5ee889651dd3ed678389859';
+const id = '362917';
 
 i18n
     .use(CustomBackend)
@@ -58,7 +58,7 @@ i18n
         },
 
         interpolation: {
-            escapeValue: false, // not needed for react as it escapes by default
+            escapeValue: false,
         },
     });
 
