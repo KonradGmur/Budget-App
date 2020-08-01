@@ -4,9 +4,12 @@ import { Navigation, Wrapper } from 'components';
 import { ThemeProvider } from 'styled-components';
 import theme from 'utils/theme';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 
 function App() {
+  const { i18n } = useTranslation();
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
@@ -17,8 +20,8 @@ function App() {
         ]}
           RightElement={(
             <div>
-              <button>PL</button>
-              <button>ENG</button>
+              <button onClick={() => i18n.changeLanguage('en')}>ENG</button>
+              <button onClick={() => i18n.changeLanguage('pl')}>PL</button>
             </div>
           )}
         />
@@ -33,4 +36,12 @@ function App() {
   );
 }
 
-export default App;
+function RootApp() {
+  return (
+    <React.Suspense fallback='Loading...'>
+      <App />
+    </React.Suspense>
+  )
+}
+
+export default RootApp;
