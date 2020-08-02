@@ -1,6 +1,6 @@
 import React from 'react';
 import GlobalStyles from './index.css';
-import { Navigation, Wrapper } from 'components';
+import { Navigation, Wrapper, LoadingIndicator } from 'components';
 import { ThemeProvider } from 'styled-components';
 import theme from 'utils/theme';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -11,7 +11,7 @@ function App() {
   const { i18n } = useTranslation();
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <GlobalStyles />
       <Router>
         <Navigation items={[
@@ -32,15 +32,17 @@ function App() {
           </Switch>
         </Wrapper>
       </Router>
-    </ThemeProvider>
+    </>
   );
 }
 
 function RootApp() {
   return (
-    <React.Suspense fallback='Loading...'>
-      <App />
-    </React.Suspense>
+    <ThemeProvider theme={theme}>
+      <React.Suspense fallback={<LoadingIndicator />}>
+        <App />
+      </React.Suspense>
+    </ThemeProvider>
   )
 }
 
