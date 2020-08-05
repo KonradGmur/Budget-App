@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'utils/theme';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
-
+import { connect } from 'react-redux';
 
 function App() {
   const { i18n } = useTranslation();
@@ -35,6 +35,10 @@ function App() {
     </>
   );
 }
+
+const ConnectedApp = connect(state => {
+
+})(App)
 
 function RootApp() {
   return (

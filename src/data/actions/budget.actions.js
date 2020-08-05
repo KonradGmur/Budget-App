@@ -12,19 +12,18 @@ export const fetchBudget = (id) => async (dispatch) => {
     try {
         const response = await fetchBudget(id);
         const data = response.json();
+
         dispatch({
             type: BUDGET_GET_SUCCESS,
             payload: data,
         })
     } catch (error) {
         dispatch({
-            type: BUDGET_GET_SUCCESS,
-            payload: data,
+            type: BUDGET_GET_FAILURE,
         })
     }
+}
 
+const fetchBudgetedCategories = () => {
 
-
-    const fetchBudgetedCategories = () => {
-
-    }
+}
