@@ -6,8 +6,10 @@ import theme from 'utils/theme';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
+import { fetchBudget } from 'data/actions/budget.actions';
 
-function App() {
+function App({ budget, fetchBudget }) {
+  fetchBudget(1);
   const { i18n } = useTranslation();
 
   return (
@@ -37,14 +39,18 @@ function App() {
 }
 
 const ConnectedApp = connect(state => {
-
+  return {
+    budget: state.budget.budget
+  }
+}, {
+  fetchBudget,
 })(App)
 
 function RootApp() {
   return (
     <ThemeProvider theme={theme}>
       <React.Suspense fallback={<LoadingIndicator />}>
-        <App />
+        <ConnectedApp />
       </React.Suspense>
     </ThemeProvider>
   )
