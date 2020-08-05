@@ -4,13 +4,27 @@ import {
     BUDGET_GET_FAILURE,
 } from 'data/constants';
 
-const fetchBudget = () => (dispatch) {
+export const fetchBudget = (id) => async (dispatch) => {
     dispatch({
         type: BUDGET_GET_REQUEST
     })
-    const response = fetch('localhost:3001/');
-}
 
-const fetchBudgetedCategories = () => {
+    try {
+        const response = await fetchBudget(id);
+        const data = response.json();
+        dispatch({
+            type: BUDGET_GET_SUCCESS,
+            payload: data,
+        })
+    } catch (error) {
+        dispatch({
+            type: BUDGET_GET_SUCCESS,
+            payload: data,
+        })
+    }
 
-}
+
+
+    const fetchBudgetedCategories = () => {
+
+    }
